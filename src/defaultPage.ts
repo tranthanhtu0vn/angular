@@ -1,6 +1,6 @@
 import {Component} from "@angular/core";
 @Component({
     selector:"default-page",
-    template:"<span>Hello world</span>"
+    templateUrl:"src/defaultPage.html"
 })
 export class DefaultPage{}
