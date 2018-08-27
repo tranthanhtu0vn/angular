@@ -1,0 +1,42 @@
+<html>
+    <head>
+        <title>Angulr Training</title>
+    </head>
+    <body>
+        <default-page></default-page>
+        <script src="node_modules/core-js/client/shim.min.js"></script>
+        <script src="node_modules/zone.js/dist/zone.js"></script>
+        <script src="node_modules/reflect-metadata/reflect.js"></script>
+        <script src="node_modules/systemjs/dist/system.src.js"></script>
+        <script>
+            System.config({
+                paths:{
+                    "@angular/platform-browser-dynamic":["/node_modules/@angular/platform-browser-dynamic/bundles/platform-browser-dynamic.umd.js"],
+                    "@angular/platform-browser":["/node_modules/@angular/platform-browser/bundles/platform-browser.umd.js"],
+                    "@angular/common":["/node_modules/@angular/common/bundles/common.umd.js"],
+                    "@angular/compiler":["/node_modules/@angular/compiler/bundles/compiler.umd.js"],
+                    "@angular/core":["/node_modules/@angular/core/bundles/core.umd.js"],
+                    "rxjs":["/node_modules/rxjs"],
+                    "rxjs/operators":["/node_modules/rxjs/operators"]
+
+                },
+                packages:{
+                    "rxjs":{
+                        defaultExtension:"js",
+                        main:"index.js"
+                    },
+                    "rxjs/operators":{
+                        defaultExtension:"js",
+                        main:"index.js"
+                    },
+                    "src":{
+                        defaultExtension:"js"
+                    }
+                }
+            });
+            System.import("src/main").catch(function(e){
+                console.log(e);
+            });
+        </script>
+    </body>
+</html>
