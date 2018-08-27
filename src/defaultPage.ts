@@ -5,7 +5,7 @@ import {Component} from "@angular/core";
 })
 export class DefaultPage{
     public users:Array<any>=[];
-    public selectedUser: any;
+    public selectedItem: any;
     public firstName:string;
     constructor(){
         this.users=[
@@ -15,7 +15,7 @@ export class DefaultPage{
     }
     public onInfoClicked(user: any):void{
         this.firstName=user.firstName;
-        this.selectedUser=user;
+        this.selectedItem=user;
         console.log(user);
     }
 }

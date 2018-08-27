@@ -116,7 +116,12 @@
                           </tr>
                         </tbody>
                       </table>
-                      <div class="x_panel" *ngIf="selectedUser">
+                      <user-info 
+                        *ngIf="selectedItem" 
+                          [(firstName)]="selectedItem.firstName"
+                        >
+                      </user-info>
+                      <!-- <div class="x_panel" *ngIf="selectedUser">
                           <div class="x_title">
                             <h2>User information</h2>
                             <div class="clearfix"></div>
@@ -156,7 +161,7 @@
         
                             </form>
                           </div>
-                        </div>
+                        </div> -->
                     </div>
                   </div>
           </div>
