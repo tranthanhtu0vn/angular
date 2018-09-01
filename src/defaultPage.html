@@ -93,32 +93,9 @@
                       <div class="clearfix"></div>
                     </div>
                     <div class="x_content">
-                      <table class="table table-bordered">
-                        <thead>
-                          <tr>
-                            <th>#</th>
-                            <th>First Name</th>
-                            <th>Last Name</th>
-                            <th>Username</th>
-                            <th>Actions</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr *ngFor="let user of users; let itemIndex=index;">
-                            <th scope="row">{{itemIndex + 1}}</th>
-                            <td>{{user.firstName}}</td>
-                            <td>{{user.lastName}}</td>
-                            <td>{{user.userName}}</td>
-                            <td>
-                              <i class="fa fa-info-circle fa-2x" (click)="onInfoClicked(user)"></i>
-                              <i class="fa fa-edit fa-2x"></i>
-                            </td>
-                          </tr>
-                        </tbody>
-                      </table>
+                      <users></users>
                       <user-info 
-                        *ngIf="selectedItem" 
-                          [(firstName)]="selectedItem.firstName"
+                          [firstName]="'just for testing userService'"
                         >
                       </user-info>
                       <!-- <div class="x_panel" *ngIf="selectedUser">
