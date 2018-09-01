@@ -10,4 +10,13 @@ export class UserService{
     public getUsers():Array<any>{
         return this.users;
     }
+
+    public getUser(userId: string):any{
+        throw "exception";
+    }
+
+    public save(user: any):void{
+        throw "exception";
+    }
+
 }

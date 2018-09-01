@@ -6,6 +6,12 @@ import {UserService} from "./userService";
     //providers:[UserService]
 })
 export class DefaultPage{
+    public onRouteActivated(route: any):void{
+        console.log("onRouteActivated:", route);
+        if(route && route.onRouteActivated){
+            route.onRouteActivated(route);
+        }
+    }
     // public users:Array<any>=[];
     // public selectedItem: any;
     // public firstName:string;
