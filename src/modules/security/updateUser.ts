@@ -3,7 +3,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {UserService} from "./userService";
 
 @Component({
-    templateUrl:"src/updateUser.html"
+    templateUrl:"src/modules/security/updateUser.html"
 })
 export class UpdateUser{
     public userId: string;
@@ -19,6 +19,6 @@ export class UpdateUser{
 
     public onSaveClicked():void{
         this.userService.save(this.user);
-        this.router.navigate(["users"]);
+        this.router.navigate(["security/users"]);
     }
 }

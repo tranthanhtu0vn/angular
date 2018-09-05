@@ -1,4 +1,4 @@
 import {platformBrowserDynamic} from "@angular/platform-browser-dynamic";
-import {DefaultModule}  from "./defaultModule";
+import {DefaultLayout}  from "./layouts/default/defaultLayout";
 
-platformBrowserDynamic().bootstrapModule(DefaultModule);
+platformBrowserDynamic().bootstrapModule(DefaultLayout);

@@ -25,9 +25,10 @@
                 <td>{{user.userName}}</td>
                 <td>
                   <i class="fa fa-info-circle fa-2x" (click)="onInfoClicked(user)"></i>
-                  <a [routerLink]="['/users/'+user.id+'/edit']" title="Edit user" >
+                  <icon-edit (onClicked)="onEditUserClicked(user)"></icon-edit>
+                  <!-- <a [routerLink]="['/security/users/'+user.id+'/edit']" title="Edit user" >
                     <i class="fa fa-edit fa-2x"></i>
-                  </a>
+                  </a> -->
                 </td>
               </tr>
             </tbody>

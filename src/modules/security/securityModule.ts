@@ -1,27 +1,25 @@
 import {NgModule} from "@angular/core";
 import {Routes, RouterModule} from "@angular/router";
-import {BrowserModule} from "@angular/platform-browser";
 import {FormsModule} from "@angular/forms";
-import {DefaultPage} from "./defaultPage";
 import {UserInfo} from "./userInfo";
 import {Users} from "./users";
 import {UserService} from "./userService";
 import {LocalUserService} from "./localUserService";
 import {UpdateUser} from "./updateUser";
-
+import { CommonModule } from "@angular/common";
+import {ShareModule} from "../share/shareModule";
 let routes: Routes=[
     {path:"", redirectTo:"users", pathMatch:"full"},
     {path:"users", component: Users},
     {path:"users/:userId/edit", component: UpdateUser}
 ];
 @NgModule({
-    imports:[BrowserModule, FormsModule, RouterModule.forRoot(routes)],
+    imports:[CommonModule, FormsModule, RouterModule.forChild(routes), ShareModule],
     providers:[
         {provide: UserService, useClass: LocalUserService}
     ],
-    declarations:[DefaultPage, UserInfo, Users, UpdateUser],
-    bootstrap:[DefaultPage]
+    declarations:[UserInfo, Users, UpdateUser]
 })
-export class DefaultModule{
+export class SecurityModule{
 
 }

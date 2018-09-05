@@ -4,6 +4,9 @@ const LocalStorageConst={
     USERS:"USERS"
 };
 export class LocalUserService extends UserService {
+    constructor(){
+        super();
+    }
     public getUsers():Array<any>{
         let json = window.localStorage.getItem(LocalStorageConst.USERS);
         return !!json?JSON.parse(json):[];

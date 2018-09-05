@@ -3,7 +3,7 @@ import {Router} from "@angular/router";
 import {UserService} from "./userService";
 @Component({
     selector:"users",
-    templateUrl:"src/users.html"
+    templateUrl:"src/modules/security/users.html"
 })
 export class Users{
     public users:Array<any>=[];
@@ -20,7 +20,7 @@ export class Users{
         console.log(user);
     }
     public onEditUserClicked(user: any):void{
-        this.router.navigate(["/users/"+ user.id+"/edit"]);
+        this.router.navigate(["/security/users/"+ user.id+"/edit"]);
         ///users/1/edit
     }
     public onRouteActivated(route: any){

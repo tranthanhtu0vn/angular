@@ -3,7 +3,7 @@ import {UserService} from "./userService";
 
 @Component({
     selector:"user-info",
-    templateUrl:"src/userInfo.html"
+    templateUrl:"src/modules/security/userInfo.html"
 })
 export class UserInfo{
     @Input() firstName: any;
