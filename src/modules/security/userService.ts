@@ -1,20 +1,30 @@
-export class UserService{
-    protected users:Array<any>=[];
-    constructor(){
-        this.users=[
-            {id:1, firstName:"TU UserService", lastName:"Tran", userName:"tu.tran"},
-            {id:2, firstName:"TU1", lastName:"Tran", userName:"tu.tran1"}
-        ];
+import {Http, Headers} from "@angular/http";
+import "rxjs/add/operator/map";
+import { Injectable } from "@angular/core";
+@Injectable()
+export class UserService {
+    private http: Http;
+    constructor(http: Http) {
+        this.http = http;
     }
-    public getUsers():Array<any>{
-        return this.users;
+    public getUsers(): Promise<any> {
+        let uri = "https://angularnetapi.azurewebsites.net/api/users";
+        let header: Headers = new Headers();
+        header.append("accept", "application/json");
+        let self=this;
+        let def = new Promise((resolve, reject) => {
+            self.http.get(uri, { headers: header })
+                .map((response: any) => response.json())
+                .subscribe((dataInJson: any) => { resolve(dataInJson) });
+        });
+        return def;
     }
 
-    public getUser(userId: string):any{
+    public getUser(userId: string): any {
         throw "exception";
     }
 
-    public save(user: any):void{
+    public save(user: any): void {
         throw "exception";
     }
 

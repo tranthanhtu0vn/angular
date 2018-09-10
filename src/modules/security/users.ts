@@ -12,7 +12,10 @@ export class Users{
     private router: Router;
     constructor(userService: UserService, router: Router){
         this.router=router;
-        this.users=userService.getUsers();
+        let self=this;
+        userService.getUsers().then((users: any)=>{
+            self.users=users;
+        });
     }
     public onInfoClicked(user: any):void{
         this.firstName=user.firstName;

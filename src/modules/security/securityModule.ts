@@ -8,15 +8,16 @@ import {LocalUserService} from "./localUserService";
 import {UpdateUser} from "./updateUser";
 import { CommonModule } from "@angular/common";
 import {ShareModule} from "../share/shareModule";
+import { HttpModule } from "@angular/http";
 let routes: Routes=[
     {path:"", redirectTo:"users", pathMatch:"full"},
     {path:"users", component: Users},
     {path:"users/:userId/edit", component: UpdateUser}
 ];
 @NgModule({
-    imports:[CommonModule, FormsModule, RouterModule.forChild(routes), ShareModule],
+    imports:[HttpModule, CommonModule, FormsModule, RouterModule.forChild(routes), ShareModule],
     providers:[
-        {provide: UserService, useClass: LocalUserService}
+        UserService
     ],
     declarations:[UserInfo, Users, UpdateUser]
 })
