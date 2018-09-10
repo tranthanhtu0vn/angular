@@ -3,5 +3,6 @@ node_modules
 **/**/*.js.map
 **/packages
 **/**/*.user
+**/.vs
 **/**/obj
 **/**/bin
