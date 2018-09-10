@@ -1,5 +1,7 @@
 ﻿namespace API.DTOs
 {
+    using System;
+    [Serializable()]
     public class CreateUserRequest
     {
         public string FirstName { get; set; }

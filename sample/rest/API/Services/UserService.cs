@@ -41,7 +41,7 @@
                 HttpHelper.Throw("Last name was invalid", HttpStatusCode.BadRequest);
             }
 
-            if (String.IsNullOrWhiteSpace(request.UserName) && this.GetUserByUserName(request.UserName) != null)
+            if (String.IsNullOrWhiteSpace(request.UserName) || this.GetUserByUserName(request.UserName) != null)
             {
                 HttpHelper.Throw("User name was invalid", HttpStatusCode.BadRequest);
             }
@@ -92,7 +92,7 @@
                 HttpHelper.Throw("Last name was invalid", HttpStatusCode.BadRequest);
             }
             User existedUser = this.GetUserByUserName(request.UserName);
-            if (existedUser == null || existedUser.Id != request.UserId)
+            if (existedUser != null && existedUser.Id != request.UserId)
             {
                 HttpHelper.Throw("User name was invalid", HttpStatusCode.BadRequest);
             }

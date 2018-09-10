@@ -7,7 +7,7 @@
     using System.Collections.Generic;
     using System.Web.Http;
     [RoutePrefix("api/users")]
-    public class UserController
+    public class UserController: ApiController
     {
         [Route("")]
         [HttpGet()]
