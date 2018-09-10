@@ -7,18 +7,29 @@ import {UserService} from "./userService";
 })
 export class UpdateUser{
     public userId: string;
-    public user:any;
+    public user:any={};
     private userService: UserService;
     private router: Router;
     constructor(activatedRoute: ActivatedRoute, userService: UserService, router:Router){
         this.userService=userService;
         this.router=router;
         this.userId= activatedRoute.params["value"].userId;
-        this.user=userService.getUser(this.userId);
+        let self=this;
+        userService.getUser(this.userId).then((user: any)=>{
+            self.user=user;
+        })
     }
 
     public onSaveClicked():void{
-        this.userService.save(this.user);
-        this.router.navigate(["security/users"]);
+        let self =this;
+        let updateUserREquest={
+            userName:this.user.userName,
+            firstName:this.user.firstName,
+            lastName: this.user.lastName
+        };
+        this.userService.save(this.user.id,  updateUserREquest).then(()=>{
+            self.router.navigate(["security/users"]);
+        });
+        
     }
 }

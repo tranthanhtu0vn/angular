@@ -21,11 +21,29 @@ export class UserService {
     }
 
     public getUser(userId: string): any {
-        throw "exception";
+        let uri = "https://angularnetapi.azurewebsites.net/api/users/"+ userId;
+        let header: Headers = new Headers();
+        header.append("accept", "application/json");
+        let self=this;
+        let def = new Promise((resolve, reject) => {
+            self.http.get(uri, { headers: header })
+                .map((response: any) => response.json())
+                .subscribe((dataInJson: any) => { resolve(dataInJson) });
+        });
+        return def;
     }
 
-    public save(user: any): void {
-        throw "exception";
+    public save(userId:string,  updateRequest: any): Promise<any> {
+        let uri = "https://angularnetapi.azurewebsites.net/api/users/"+ userId;
+        let header: Headers = new Headers();
+        header.append("content-type", "application/json");
+        let self=this;
+        let def = new Promise((resolve, reject) => {
+            self.http.put(uri, JSON.stringify(updateRequest), { headers: header })
+                .map((response: any) => response.json())
+                .subscribe((dataInJson: any) => { resolve(dataInJson) });
+        });
+        return def;
     }
 
 }
