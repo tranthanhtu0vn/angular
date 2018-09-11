@@ -1,40 +1,28 @@
-<div class="x_panel">
-    <div class="x_title">
-      <h2>Users</h2>
-      <span class="pull-right">
-        <a href="Add new user" onclick="return false;" href="#" (click)="onCreateUserClicked()">
-          <i class="fa fa-plus-square fa-2x pull-right"></i>
-        </a>  
-      </span>
-      <div class="clearfix"></div>
-    </div>
-    <div class="x_content">
-        <table class="table table-bordered">
-            <thead>
-              <tr>
-                <th>#</th>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Username</th>
-                <th>Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let user of users; let itemIndex=index;">
-                <th scope="row">{{itemIndex + 1}}</th>
-                <td>{{user.firstName}}</td>
-                <td>{{user.lastName}}</td>
-                <td>{{user.userName}}</td>
-                <td>
-                  <i class="fa fa-info-circle fa-2x" (click)="onInfoClicked(user)"></i>
-                  <icon-edit (onClicked)="onEditUserClicked(user)"></icon-edit>
-                  <!-- <a [routerLink]="['/security/users/'+user.id+'/edit']" title="Edit user" >
-                    <i class="fa fa-edit fa-2x"></i>
-                  </a> -->
-                </td>
-              </tr>
-            </tbody>
-          </table>
-          <user-info [userId]="selectedItem.id" *ngIf="selectedItem"></user-info>
-    </div>
-  </div>
+<page [title]="'Users'">
+    <commands>
+        <icon-add (onClicked)="onCreateUserClicked()"></icon-add>
+    </commands>
+    <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Username</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of users; let itemIndex=index;">
+            <th scope="row">{{itemIndex + 1}}</th>
+            <td>{{user.firstName}}</td>
+            <td>{{user.lastName}}</td>
+            <td>{{user.userName}}</td>
+            <td>
+              <i class="fa fa-info-circle fa-2x" (click)="onInfoClicked(user)"></i>
+              <icon-edit (onClicked)="onEditUserClicked(user)"></icon-edit>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+</page>
