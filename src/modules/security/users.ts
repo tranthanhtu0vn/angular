@@ -17,6 +17,9 @@ export class Users{
             self.users=users;
         });
     }
+    public onCreateUserClicked():void{
+        this.router.navigate(["/security/users/add"]);
+    }
     public onInfoClicked(user: any):void{
         this.firstName=user.firstName;
         this.selectedItem=user;

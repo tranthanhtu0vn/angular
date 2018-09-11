@@ -46,4 +46,17 @@ export class UserService {
         return def;
     }
 
+    public create(request: any): Promise<any> {
+        let uri = "https://angularnetapi.azurewebsites.net/api/users";
+        let header: Headers = new Headers();
+        header.append("content-type", "application/json");
+        let self=this;
+        let def = new Promise((resolve, reject) => {
+            self.http.post(uri, JSON.stringify(request), { headers: header })
+                .map((response: any) => response.json())
+                .subscribe((dataInJson: any) => { resolve(dataInJson) });
+        });
+        return def;
+    }
+
 }
