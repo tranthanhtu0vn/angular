@@ -1,4 +1,4 @@
-import { NgModule } from "@angular/core";
+import { NgModule, ModuleWithProviders } from "@angular/core";
 import {IconEdit} from "./icons/edit";
 import {IconAdd} from "./icons/add";
 import {Page} from "./components/layouts/page";
@@ -10,8 +10,10 @@ import {FormTextInput} from "./components/form/formTextInput";
 import {FormButton} from "./components/form/formButton";
 import { CommonModule } from "@angular/common";
 import { FormsModule } from "@angular/forms";
+import {RESTConnector} from "./providers/connector/restConnector";
+import { HttpModule } from "@angular/http";
 @NgModule({
-    imports:[FormsModule, CommonModule],
+    imports:[FormsModule, CommonModule, HttpModule],
     declarations:[
         IconEdit, IconAdd,
         Page, ContentPlaceHolder, CommandPlaceHolder,
@@ -23,4 +25,18 @@ import { FormsModule } from "@angular/forms";
          FormHorizontal, FormTextInput, FormButton
     ]
 })
-export class ShareModule{}
+export class ShareModule{
+    public static forRoot():ModuleWithProviders{
+        return {
+            ngModule: ShareModule,
+            providers:[RESTConnector]
+        };
+    }
+
+    public static forChild():ModuleWithProviders{
+        return {
+            ngModule: ShareModule,
+            providers:[]
+        };
+    }
+}

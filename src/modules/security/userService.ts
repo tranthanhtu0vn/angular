@@ -1,62 +1,29 @@
-import {Http, Headers} from "@angular/http";
 import "rxjs/add/operator/map";
 import { Injectable } from "@angular/core";
+import {RESTConnector} from "../share/providers/connector/restConnector";
 @Injectable()
 export class UserService {
-    private http: Http;
-    constructor(http: Http) {
-        this.http = http;
+    private connector: RESTConnector;
+    constructor(rest: RESTConnector) {
+        this.connector=rest;
     }
     public getUsers(): Promise<any> {
         let uri = "https://angularnetapi.azurewebsites.net/api/users";
-        let header: Headers = new Headers();
-        header.append("accept", "application/json");
-        let self=this;
-        let def = new Promise((resolve, reject) => {
-            self.http.get(uri, { headers: header })
-                .map((response: any) => response.json())
-                .subscribe((dataInJson: any) => { resolve(dataInJson) });
-        });
-        return def;
+        return this.connector.get(uri);
     }
 
     public getUser(userId: string): any {
         let uri = "https://angularnetapi.azurewebsites.net/api/users/"+ userId;
-        let header: Headers = new Headers();
-        header.append("accept", "application/json");
-        let self=this;
-        let def = new Promise((resolve, reject) => {
-            self.http.get(uri, { headers: header })
-                .map((response: any) => response.json())
-                .subscribe((dataInJson: any) => { resolve(dataInJson) });
-        });
-        return def;
+        return this.connector.get(uri);
     }
 
     public save(userId:string,  updateRequest: any): Promise<any> {
         let uri = "https://angularnetapi.azurewebsites.net/api/users/"+ userId;
-        let header: Headers = new Headers();
-        header.append("content-type", "application/json");
-        let self=this;
-        let def = new Promise((resolve, reject) => {
-            self.http.put(uri, JSON.stringify(updateRequest), { headers: header })
-                .map((response: any) => response.json())
-                .subscribe((dataInJson: any) => { resolve(dataInJson) });
-        });
-        return def;
+        return this.connector.put(uri, updateRequest);
     }
 
     public create(request: any): Promise<any> {
         let uri = "https://angularnetapi.azurewebsites.net/api/users";
-        let header: Headers = new Headers();
-        header.append("content-type", "application/json");
-        let self=this;
-        let def = new Promise((resolve, reject) => {
-            self.http.post(uri, JSON.stringify(request), { headers: header })
-                .map((response: any) => response.json())
-                .subscribe((dataInJson: any) => { resolve(dataInJson) });
-        });
-        return def;
+        return this.connector.post(uri, request);
     }
-
 }

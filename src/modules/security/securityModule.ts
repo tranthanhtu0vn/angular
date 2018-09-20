@@ -15,12 +15,11 @@ let routes: Routes=[
     {path:"users/add", component: AddOrUpdateUser}
 ];
 @NgModule({
-    imports:[HttpModule, CommonModule, FormsModule, RouterModule.forChild(routes), ShareModule],
+    imports:[HttpModule, CommonModule, FormsModule, RouterModule.forChild(routes), ShareModule.forChild()],
     providers:[
         UserService
     ],
     declarations:[UserInfo, Users, AddOrUpdateUser]
 })
 export class SecurityModule{
-
 }
