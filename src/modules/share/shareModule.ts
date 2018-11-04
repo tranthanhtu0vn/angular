@@ -4,25 +4,24 @@ import {IconAdd} from "./icons/add";
 import {Page} from "./components/layouts/page";
 import {ContentPlaceHolder} from "./components/containers/contentPlaceHolder";
 import {CommandPlaceHolder} from "./components/common/commandPlaceHolder";
-
-import {FormHorizontal} from "./components/form/formHorizontal";
-import {FormTextInput} from "./components/form/formTextInput";
+import {FormHorizontal, FormButtonsContainer} from "./components/form/formHorizontal";
+import {FormInputText} from "./components/form/formInputText";
 import {FormButton} from "./components/form/formButton";
-import { CommonModule } from "@angular/common";
+import {FormButtonPrimary} from "./components/form/formButtonPrimary";
 import { FormsModule } from "@angular/forms";
 import {RESTConnector} from "./providers/connector/restConnector";
 import { HttpModule } from "@angular/http";
 @NgModule({
-    imports:[FormsModule, CommonModule, HttpModule],
+    imports:[FormsModule, HttpModule],
     declarations:[
         IconEdit, IconAdd,
         Page, ContentPlaceHolder, CommandPlaceHolder,
-        FormHorizontal, FormTextInput, FormButton
+        FormHorizontal, FormButtonsContainer, FormInputText, FormButton, FormButtonPrimary
     ],
     exports:[
         IconEdit,IconAdd,
-         Page, ContentPlaceHolder, CommandPlaceHolder,
-         FormHorizontal, FormTextInput, FormButton
+        Page, ContentPlaceHolder, CommandPlaceHolder,
+        FormHorizontal, FormButtonsContainer, FormInputText, FormButton, FormButtonPrimary
     ]
 })
 export class ShareModule{
