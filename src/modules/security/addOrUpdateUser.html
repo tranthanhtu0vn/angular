@@ -1,12 +1,5 @@
 <page [title]="'Add/Update User'">
   <form-horizontal>
-<<<<<<< HEAD
-    <form-text-input [(model)]="user.firstName" [label]="'First name'"></form-text-input>
-    <form-text-input [(model)]="user.lastName" [label]="'Last name'"></form-text-input>
-    <form-text-input [(model)]="user.userName" [label]="'User name'"></form-text-input>
-    <form-button (onClicked)="onSaveClicked()" [label]="'Save'"></form-button>
-    <form-button (onClicked)="onCancelClicked($event)" [label]="'Cancel'"></form-button>
-=======
     <form-input-text [label]="'First name'" [(model)]="user.firstName"></form-input-text>
     <form-input-text [label]="'Last name'" [(model)]="user.lastName"></form-input-text>
     <form-input-text [label]="'User name'" [(model)]="user.userName"></form-input-text>
@@ -14,6 +7,5 @@
       <form-button [label]="'Cancel'" (onClicked)="onCancelClicked($event)"></form-button>
       <form-button-primary [label]="'Save'" (onClicked)="onSaveClicked($event)"></form-button-primary>
     </form-buttons>
->>>>>>> feature/improve_form_component
   </form-horizontal>
 </page>
