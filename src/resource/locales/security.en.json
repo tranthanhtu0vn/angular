@@ -1,0 +1,8 @@
+{
+    "addOrUpdateUser":{
+        "title":"Add/ Update User",
+        "firstName":"First name",
+        "lastName":"Last name",
+        "userName":"User name"
+    }
+}

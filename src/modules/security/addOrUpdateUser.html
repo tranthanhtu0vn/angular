@@ -1,11 +1,12 @@
-<page [title]="'Add/Update User'">
+<page [title]="i18n.security.addOrUpdateUser.title">
   <form-horizontal>
-    <form-input-text [label]="'First name'" [(model)]="user.firstName"></form-input-text>
-    <form-input-text [label]="'Last name'" [(model)]="user.lastName"></form-input-text>
-    <form-input-text [label]="'User name'" [(model)]="user.userName"></form-input-text>
+    <form-input-text [label]="i18n.security.addOrUpdateUser.firstName" [(model)]="user.firstName"></form-input-text>
+    <form-input-text [label]="i18n.security.addOrUpdateUser.lastName" [(model)]="user.lastName"></form-input-text>
+    <form-input-text [label]="i18n.security.addOrUpdateUser.userName" [(model)]="user.userName"></form-input-text>
     <form-buttons>
-      <form-button [label]="'Cancel'" (onClicked)="onCancelClicked($event)"></form-button>
-      <form-button-primary [label]="'Save'" (onClicked)="onSaveClicked($event)"></form-button-primary>
+      <form-button [label]="'Change Language'" (onClicked)="onChangeLanguageClicked($event)"></form-button>
+      <form-button [label]="i18n.common.form.cancel" (onClicked)="onCancelClicked($event)"></form-button>
+      <form-button-primary [label]="i18n.common.form.save" (onClicked)="onSaveClicked($event)"></form-button-primary>
     </form-buttons>
   </form-horizontal>
 </page>
