@@ -1,6 +1,9 @@
 import { IIoCRegistration } from "./iiocRegistration";
 import { Injector } from "@angular/core";
-
+import { IoCLifeCycle } from "./enum";
+import {IIoCRegistrationFactory} from "./iiocRegistrationFactory";
+import {IoCSingletonRegistrationFactory} from "./iocSingletonRegistrationFactory";
+import {IoCTransientRegistrationFactory} from "./iocTransientRegistrationFactory";
 export class IoCContainer{
     private registrations: any={};
     private injector: Injector;
@@ -20,7 +23,18 @@ export class IoCContainer{
         }
         let name=type;
         if(!this.registrations[name]){throw "Invalid name for IoC resolve method";}
-        return new this.registrations[name].instance();
+        let item:IIoCRegistration = this.registrations[name];
+        let factory:IIoCRegistrationFactory=this.getFactory(item);
+        return factory.create();
+    }
+    private getFactory(item: IIoCRegistration):IIoCRegistrationFactory{
+        switch(item.lifecycle){
+            case IoCLifeCycle.Singletone:
+                return new IoCSingletonRegistrationFactory(item);
+            case IoCLifeCycle.Transient:
+            default:
+                return new IoCTransientRegistrationFactory(item);
+        }
     }
     private resolveFromAngular(type: any){
         return this.injector.get(type);

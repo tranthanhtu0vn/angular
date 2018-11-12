@@ -3,6 +3,11 @@ import "rxjs/add/operator/map";
 import { IConnector } from "./iconnector";
 
 export class RESTConnector implements IConnector{
+    private static NumberOfInstance:number=0;
+    constructor(){
+        RESTConnector.NumberOfInstance+=1;
+        console.log("REST Connector:", RESTConnector.NumberOfInstance);
+    }
     public get(uri: string):Promise<any>{
         let header: Headers = new Headers();
         header.append("accept", "application/json");
