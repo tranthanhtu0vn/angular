@@ -1,29 +1,30 @@
 import "rxjs/add/operator/map";
 import { Injectable } from "@angular/core";
-import {RESTConnector} from "../share/providers/connector/restConnector";
+import {IConnector} from "../share/providers/connector/iconnector";
+import {IoCNames} from "../share/models/enum";
 @Injectable()
 export class UserService {
-    private connector: RESTConnector;
-    constructor(rest: RESTConnector) {
-        this.connector=rest;
-    }
     public getUsers(): Promise<any> {
+        let connector: IConnector = window.ioc.resolve(IoCNames.IConnector);
         let uri = "https://angularnetapi.azurewebsites.net/api/users";
-        return this.connector.get(uri);
+        return connector.get(uri);
     }
 
     public getUser(userId: string): any {
+        let connector: IConnector = window.ioc.resolve(IoCNames.IConnector);
         let uri = "https://angularnetapi.azurewebsites.net/api/users/"+ userId;
-        return this.connector.get(uri);
+        return connector.get(uri);
     }
 
     public save(userId:string,  updateRequest: any): Promise<any> {
+        let connector: IConnector = window.ioc.resolve(IoCNames.IConnector);
         let uri = "https://angularnetapi.azurewebsites.net/api/users/"+ userId;
-        return this.connector.put(uri, updateRequest);
+        return connector.put(uri, updateRequest);
     }
 
     public create(request: any): Promise<any> {
+        let connector: IConnector = window.ioc.resolve(IoCNames.IConnector);
         let uri = "https://angularnetapi.azurewebsites.net/api/users";
-        return this.connector.post(uri, request);
+        return connector.post(uri, request);
     }
 }
