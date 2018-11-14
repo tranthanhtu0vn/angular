@@ -4,17 +4,14 @@ import {UserService} from "./userService";
 import {BasePage} from "../share/models/ui/basePage";
 import { ResourceManager } from "../share/models/resourceManager";
 import {Language} from "../share/models/enum";
+import {AddOrUpdateUserModel} from "./addOrUpdateUserModel";
 
 @Component({
     templateUrl:"src/modules/security/addOrUpdateUser.html"
 })
 export class AddOrUpdateUser extends BasePage{
     public userId: string;
-    public user:any={
-        firstName:"",
-        lastName:"",
-        userName:""
-    };
+    public user:AddOrUpdateUserModel = new AddOrUpdateUserModel();
     private userService: UserService;
     private router: Router;
     private resourceManager:ResourceManager
@@ -27,7 +24,7 @@ export class AddOrUpdateUser extends BasePage{
         if(!this.userId){return;}
         let self=this;
         userService.getUser(this.userId).then((user: any)=>{
-            self.user=user;
+            self.user.import(user);
         })
     }
     public onChangeLanguageClicked():void{

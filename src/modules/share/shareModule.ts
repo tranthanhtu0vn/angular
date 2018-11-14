@@ -11,14 +11,17 @@ import {FormButtonPrimary} from "./components/form/formButtonPrimary";
 import { FormsModule } from "@angular/forms";
 import { HttpModule } from "@angular/http";
 import {ResourceManager} from "./models/resourceManager";
+import {Validation} from "./components/validation";
 @NgModule({
     imports:[FormsModule, HttpModule],
     declarations:[
+        Validation,
         IconEdit, IconAdd,
         Page, ContentPlaceHolder, CommandPlaceHolder,
         FormHorizontal, FormButtonsContainer, FormInputText, FormButton, FormButtonPrimary
     ],
     exports:[
+        Validation, 
         IconEdit,IconAdd,
         Page, ContentPlaceHolder, CommandPlaceHolder,
         FormHorizontal, FormButtonsContainer, FormInputText, FormButton, FormButtonPrimary

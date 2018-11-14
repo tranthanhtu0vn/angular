@@ -3,6 +3,7 @@
         "module": "system",
         "moduleResolution": "node",
         "sourceMap": true,
+        "target": "es5",
         "experimentalDecorators": true,
         "emitDecoratorMetadata": true,
         "lib": [

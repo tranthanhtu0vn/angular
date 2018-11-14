@@ -4,5 +4,12 @@ export const Language={
 };
 
 export const IoCNames={
-    IConnector:"IConnector"
+    IConnector:"IConnector",
+    IEventManager:"IEventManager"
 };
+
+
+export enum ValidationStatus{
+    Failed = 1,
+    Passed = 2
+}
