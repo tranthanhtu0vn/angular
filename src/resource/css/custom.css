@@ -4798,3 +4798,11 @@ ul.notifications {
   width: 24px;
   height: 24px;
 }
+
+.validation_failed{}
+.validation_failed input{
+  background-image: url(../images/error.svg);
+  background-repeat: no-repeat;
+  background-position: calc(100% - 1px) 50%;
+  border: red solid 1px;
+}
