@@ -8,6 +8,8 @@
     using System.Web.Http;
     using System.Net;
     using Helpers;
+    using TinyERP.Common.Helpers;
+    using TinyERP.Common.Validation;
 
     public class UserService : IUserService
     {
@@ -27,24 +29,13 @@
 
         private void Validate(CreateUserRequest request)
         {
-            if (request == null)
+            IValidationException validator = ValidationHelper.Validate(request);
+            User existedUser = this.GetUserByUserName(request.UserName);
+            if (existedUser != null)
             {
-                HttpHelper.Throw("Invalid request", HttpStatusCode.BadRequest);
+                validator.Add(new ValidationError("security.addOrUpdateUser.userNameWasExisted", "USER_NAME", request.UserName));
             }
-            if (String.IsNullOrWhiteSpace(request.FirstName))
-            {
-                HttpHelper.Throw("First name was invalid", HttpStatusCode.BadRequest);
-            }
-
-            if (String.IsNullOrWhiteSpace(request.LastName))
-            {
-                HttpHelper.Throw("Last name was invalid", HttpStatusCode.BadRequest);
-            }
-
-            if (String.IsNullOrWhiteSpace(request.UserName) || this.GetUserByUserName(request.UserName) != null)
-            {
-                HttpHelper.Throw("User name was invalid", HttpStatusCode.BadRequest);
-            }
+            validator.ThrowIfError();
         }
 
         private User GetUserByUserName(string userName)
@@ -73,29 +64,14 @@
 
         private void Validate(UpdateUserRequest request)
         {
-            if (request == null)
-            {
-                HttpHelper.Throw("Invalid request", HttpStatusCode.BadRequest);
-            }
-
-            if (this.GetUser(request.UserId) == null)
-            {
-                HttpHelper.Throw("UserId was invalid", HttpStatusCode.BadRequest);
-            }
-            if (String.IsNullOrWhiteSpace(request.FirstName))
-            {
-                HttpHelper.Throw("First name was invalid", HttpStatusCode.BadRequest);
-            }
-
-            if (String.IsNullOrWhiteSpace(request.LastName))
-            {
-                HttpHelper.Throw("Last name was invalid", HttpStatusCode.BadRequest);
-            }
+            IValidationException validator = ValidationHelper.Validate(request);
+            
             User existedUser = this.GetUserByUserName(request.UserName);
             if (existedUser != null && existedUser.Id != request.UserId)
             {
-                HttpHelper.Throw("User name was invalid", HttpStatusCode.BadRequest);
+                validator.Add(new ValidationError("security.addOrUpdateUser.userNameWasExisted", "USER_NAME", request.UserName));
             }
+            validator.ThrowIfError();
         }
     }
 }

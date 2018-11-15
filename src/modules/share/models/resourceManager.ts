@@ -20,7 +20,7 @@ export class ResourceManager{
     }
     private loadByName(name:string):Promise<any>{
         let def=new Promise((resolve, rej)=>{
-            let uri="http://angular.com/src/resource/locales/"+ name+"."+ResourceManager.language+".json";
+            let uri="/src/resource/locales/"+ name+"."+ResourceManager.language+".json";
             let connector:IConnector = window.ioc.resolve(IoCNames.IConnector);
             connector.get(uri).then((json: any)=>{
                 ResourceManager.i18n[name]=json;

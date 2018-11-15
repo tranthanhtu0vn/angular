@@ -2,7 +2,7 @@ import {required}  from "../share/decorators/required";
 export class AddOrUpdateUserModel{
     public firstName:string;
     public lastName:string;
-    @required("security.addOrUpdateUser.userNameAsInvalid")
+    @required("security.addOrUpdateUser.userNameWasInvalid")
     public userName: string;
 
     public import(data: any):void{
